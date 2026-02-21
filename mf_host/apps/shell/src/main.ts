@@ -1,9 +1,9 @@
-import { registerRemotes } from '@module-federation/enhanced/runtime';
+import { setRemoteDefinitions } from '@nx/angular/mf';
 
 fetch('/module-federation.manifest.json')
   .then((res) => res.json())
-  .then((remotes: Record<string, string>) =>
-    Object.entries(remotes).map(([name, entry]) => ({ name, entry })),
-  )
-  .then((remotes) => registerRemotes(remotes))
-  .then(() => import('./bootstrap').catch((err) => console.error(err)));
+  .then((remotes) => {
+    setRemoteDefinitions(remotes); // <--- ESTO ES VITAL
+    return import('./bootstrap');
+  })
+  .catch((err) => console.error(err));

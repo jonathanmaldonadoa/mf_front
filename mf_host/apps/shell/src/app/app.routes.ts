@@ -4,13 +4,16 @@ import { Route } from '@angular/router';
 
 export const appRoutes: Route[] = [
   {
-    path: 'login',
+    path: 'login', // 1. Primero la ruta específica
     loadChildren: () =>
-      loadRemoteModule('login', './Module').then((m) => m.RemoteEntryModule),
+      loadRemoteModule('login', './Routes').then((m) => m.remoteRoutes),
   },
-  // Tu ruta por defecto si quieres
   {
-    path: '',
+    path: '', // 2. Después la ruta base
     component: NxWelcome,
   },
+  {
+    path: '**', // 3. Al final cualquier error
+    redirectTo: '',
+  }
 ];
