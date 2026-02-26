@@ -9,6 +9,11 @@ export const appRoutes: Route[] = [
       loadRemoteModule('login', './Routes').then((m) => m.remoteRoutes),
   },
   {
+    path: 'admin', // <-- Nueva ruta
+    loadChildren: () =>
+      loadRemoteModule('admin', './Routes').then((m) => m.remoteRoutes),
+  },
+  {
     path: '', // 2. Después la ruta base
     component: NxWelcome,
   },

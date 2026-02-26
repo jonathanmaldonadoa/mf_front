@@ -1,3 +1,4 @@
 {
-  "login": "http://localhost:4201/remoteEntry.mjs"
+  "login": "http://localhost:4201/remoteEntry.mjs",
+  "admin": "http://localhost:4202/remoteEntry.mjs"
 }
